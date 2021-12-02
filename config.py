@@ -1,17 +1,18 @@
-# TODO read in these values from a configuration file
+import matplotlib.pyplot as plt
+
 stat_options = {
     'sim_time': 'Simulation time',
     'created': 'Created Messages',
     'started': 'Started Messages',
     'relayed': 'Relayed Messages',
-    'aborted': 'Abortes Messages',
+    'aborted': 'Aborts Messages',
     'dropped': 'Dropped Messages',
     'removed': 'Removed Messages',
     'delivered': 'Delivered Messages',
     'delivery_prob': 'Delivery Probability',
     'response_prob': 'Response Probability',
     'overhead_ratio': 'Overhead Ratio',
-    'latency_avg': 'Latency (Avererge)',
+    'latency_avg': 'Latency (Average)',
     'latency_med': 'Latency (Median)',
     'hopcount_avg': 'Hopcount (Average)',
     'hopcount_med': 'Hopcount (Median)',
@@ -21,9 +22,6 @@ stat_options = {
     'rtt_med': 'RTT (Median',
     '*': 'All stats'}
 
-graph_theme_options = {
-    'print': {},
-    'light': {},
-    'dark': {},
-    'screen': {},
-}
+seaborn_themes = [t for t in plt.style.available if not t.startswith('_')]
+
+seaborn_contexts = ['paper', 'notebook', 'talk', 'poster']
