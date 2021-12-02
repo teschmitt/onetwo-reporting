@@ -15,7 +15,7 @@ from utils import get_file_list, get_dataframe_from_file_list
 @click.option('-g', '--glob', 'glob_string', default=['*MessageStats*.txt'], multiple=True,
               help='Glob pattern to look for in reports directory.')
 @click.option('-o', '--output-dir', default='./images/', type=click.Path(exists=True), help='Output directory.')
-@click.option('-s', '--stat', default='sim_time', type=click.Choice(sorted(stat_options.keys())),
+@click.option('-s', '--stat', default='delivery_prob', type=click.Choice(sorted(stat_options.keys())),
               help='Name of the statistics value that should be parsed from the report files')
 @click.option('-t', '--theme', default='whitegrid', type=click.Choice(sorted(seaborn_themes)),
               help='Seaborn theme for the generated graphs')
