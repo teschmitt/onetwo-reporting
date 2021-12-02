@@ -22,6 +22,18 @@ stat_options = {
     'rtt_med': 'RTT (Median',
     '*': 'All stats'}
 
-seaborn_themes = [t for t in plt.style.available if not t.startswith('_')]
-
+seaborn_palettes = ['deep', 'muted', 'bright', 'pastel', 'dark', 'colorblind']
+seaborn_styles = ['white', 'dark', 'whitegrid', 'darkgrid', 'ticks']
 seaborn_contexts = ['paper', 'notebook', 'talk', 'poster']
+
+
+# Default values for command line options
+
+DEFAULT_GLOB = ['*MessageStats*.txt']
+DEFAULT_OUTPUT_DIR = './images/'
+DEFAULT_GRAPH_OUTPUT_FMT = 'PNG'
+DEFAULT_REPORTS_DIR = './reports/'
+DEFAULT_GRAPH_CONTEXT = 'paper'
+DEFAULT_GRAPH_PALETTE = 'muted'
+DEFAULT_GRAPH_STYLE = 'whitegrid'
+DEFAULT_STAT = ['delivery_prob']
