@@ -6,7 +6,7 @@ from utils import get_file_list, get_dataframe_from_file_list
 
 @click.command('stats')
 @click.option('-d', '--report-dir', default='./reports/', type=click.Path(exists=True), help='Report directory.')
-@click.option('-g', '--glob', 'glob_strings', default=['*'], multiple=True,
+@click.option('-g', '--glob', 'glob_strings', default=['*MessageStats*.txt'], multiple=True,
               help='Glob pattern(s) to look for in reports directory.')
 @click.option('-o', '--output-dir', default='./images/', type=click.Path(exists=True), help='Output directory.')
 @click.option('-s', '--stat', default=['sim_time'], type=click.Choice(sorted(stat_options.keys())), multiple=True,
