@@ -50,9 +50,8 @@ passed on directly to Seaborn in order to define the appearance of the graphs:
 - `--context`: Affects size of the labels, lines, and other elements of the plot. Can be either
   `paper`, `notebook`, `talk`, or `poster`.
   See https://seaborn.pydata.org/generated/seaborn.set_context.html for more details
-- `--theme`: Sets of properties that define the color of the background and whether
-  a grid is enabled by default. Very many options and installation specific. Please run
-  `plt.style.available` in your Python shell for the complete list.
+- `--style`: Sets of properties that define the color of the background and whether
+  a grid is enabled by default.
 
 ```text
 $ toolkit.py graph --help
@@ -61,18 +60,24 @@ Usage: toolkit.py graph [OPTIONS]
   Draw graphs based on the generated report files
 
 Options:
+  -d, --report-dir PATH           Report directory.  [default: ./reports/]
+  -f, --output-format [PNG|JPG]   [default: PNG]
+  -g, --glob TEXT                 Glob pattern to look for in reports
+                                  directory.  [default: *MessageStats*.txt]
+  -o, --output-dir PATH           Output directory.  [default: ./images/]
+  -s, --stat [*|aborted|buffertime_avg|buffertime_med|created|delivered|...]
+                                  Name of the statistics value that should be
+                                  parsed from the report files  [default:
+                                  delivery_prob]
   -c, --context [notebook|paper|poster|talk]
                                   Seaborn context for the generated graphs
-  -d, --report-dir PATH           Report directory.
-  -f, --output-format [PNG|JPG]
-  -g, --glob TEXT                 Glob pattern to look for in reports
-                                  directory.
-  -o, --output-dir PATH           Output directory.
-  -s, --stat [*|aborted|buffertime_avg|buffertime_med|created|delivered|delivery_prob|dropped|hopcount_avg|...]
-                                  Name of the statistics value that should be
-                                  parsed from the report files
-  -t, --theme [... |ggplot|grayscale|seaborn|seaborn-bright|seaborn-colorblind|seaborn-dark|seaborn-dark-palette| ...]
+                                  [default: paper]
+  -p, --palette [bright|colorblind|dark|deep|muted|pastel]
+                                  Seaborn color palette for the generated
+                                  graphs  [default: muted]
+  -y, --style [dark|darkgrid|ticks|white|whitegrid]
                                   Seaborn theme for the generated graphs
+                                  [default: whitegrid]
   --help                          Show this message and exit.
 ```
 
