@@ -1,6 +1,6 @@
 import click
 
-from commands import stats
+from commands.stats import stats
 
 __version__ = 0.1
 
@@ -18,7 +18,10 @@ def print_version(ctx, param, value):
 def toolkit():
     pass
 
+
+# noinspection PyTypeChecker
 toolkit.add_command(stats)
+
 
 if __name__ == '__main__':
     toolkit()

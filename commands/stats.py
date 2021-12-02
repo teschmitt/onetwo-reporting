@@ -1,12 +1,8 @@
 import click
 import pandas as pd
 
+from config import stat_options
 from utils import get_file_list
-
-# TODO read in these values from a configuration file
-stat_options = ['sim_time', 'created', 'started', 'relayed', 'aborted', 'dropped', 'removed', 'delivered',
-                'delivery_prob', 'response_prob', 'overhead_ratio', 'latency_avg', 'latency_med', 'hopcount_avg',
-                'hopcount_med', 'buffertime_avg', 'buffertime_med', 'rtt_avg', 'rtt_med']
 
 
 @click.command('stats')
@@ -15,10 +11,19 @@ stat_options = ['sim_time', 'created', 'started', 'relayed', 'aborted', 'dropped
 @click.option('-g', '--glob', 'glob_string', default=['*'], multiple=True,
               help='Glob pattern to look for in reports directory.')
 @click.option('-o', '--output-dir', default='./images/', type=click.Path(exists=True), help='Output directory.')
-@click.option('-s', '--stat', default='sim_time', type=click.Choice(stat_options),
+@click.option('-s', '--stat', default='sim_time', type=click.Choice(sorted(stat_options.keys())),
               help='Name of the statistics value that should be parsed from the report files')
 def stats(report_dir, glob_string, output_format, output_dir, stat):
-    """Get stats from the generated report files"""
+    """
+    Get stats from the generated report files
+    \f
+
+    :param stat: name of the statistics value that should be parsed from the report files
+    :param output_dir: output directory
+    :param output_format: output format (deprecated)
+    :param glob_string: glob string
+    :param report_dir: report directory
+    """
     file_list = get_file_list(glob_string, report_dir)
 
     file_handles = [open(fp, 'r') for fp in file_list]
