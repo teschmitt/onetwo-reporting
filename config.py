@@ -20,3 +20,10 @@ stat_options = {
     'rtt_avg': 'RTT (Average)',
     'rtt_med': 'RTT (Median',
     '*': 'All stats'}
+
+graph_theme_options = {
+    'print': {},
+    'light': {},
+    'dark': {},
+    'screen': {},
+}

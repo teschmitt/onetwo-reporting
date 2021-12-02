@@ -1,5 +1,6 @@
 import click
 
+from commands.graph import graph
 from commands.stats import stats
 
 __version__ = 0.1
@@ -21,7 +22,8 @@ def toolkit():
 
 # noinspection PyTypeChecker
 toolkit.add_command(stats)
-
+# noinspection PyTypeChecker
+toolkit.add_command(graph)
 
 if __name__ == '__main__':
     toolkit()
