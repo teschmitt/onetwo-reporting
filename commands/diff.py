@@ -20,4 +20,5 @@ def diff(reports,  output_dir):
     a, b = stats_df.columns
     stats_df['diff'] = stats_df[a] - stats_df[b]
     stats_df['reldiff'] = stats_df['diff'] / stats_df[a]
-    print(stats_df)
+
+    click.echo(stats_df)

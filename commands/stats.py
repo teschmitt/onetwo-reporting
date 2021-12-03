@@ -33,6 +33,6 @@ def stats(report_dir, separate_tables, glob_strings, output_dir, stat):
     cols = list(stats_df.columns) if display_all else list(stat)
     if separate_tables:
         for col in cols:
-            print(stats_df[[col]])
+            click.echo(stats_df[[col]])
     else:
-        print(stats_df[cols])
+        click.echo(stats_df[cols])
