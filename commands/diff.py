@@ -9,7 +9,7 @@ from utils import get_dataframe_from_file_list
 @click.option('-o', '--output-dir', default=DEFAULT_OUTPUT_DIR, type=click.Path(exists=True), help='Output directory.',
               show_default=True)
 def diff(reports,  output_dir):
-    """Get stats from the generated report files
+    """Compare two generated simulation report files
     \f
 
     :param reports: paths to two simulation reports
