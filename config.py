@@ -19,7 +19,7 @@ stat_options = {
     'buffertime_avg': 'Buffertime (Average)',
     'buffertime_med': 'Buffertime (Median)',
     'rtt_avg': 'RTT (Average)',
-    'rtt_med': 'RTT (Median',
+    'rtt_med': 'RTT (Median)',
     '*': 'All stats'}
 
 seaborn_palettes = ['deep', 'muted', 'bright', 'pastel', 'dark', 'colorblind']

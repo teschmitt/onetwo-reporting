@@ -1,5 +1,6 @@
 import click
 
+from commands.diff import diff
 from commands.graph import graph
 from commands.stats import stats
 
@@ -24,6 +25,8 @@ def toolkit():
 toolkit.add_command(stats)
 # noinspection PyTypeChecker
 toolkit.add_command(graph)
+# noinspection PyTypeChecker
+toolkit.add_command(diff)
 
 if __name__ == '__main__':
     toolkit()
