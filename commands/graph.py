@@ -27,10 +27,12 @@ from utils import get_file_list, get_dataframe_from_file_list
               help='Seaborn color palette for the generated graphs', show_default=True)
 @click.option('-y', '--style', default=DEFAULT_GRAPH_STYLE, type=click.Choice(sorted(seaborn_styles)),
               help='Seaborn theme for the generated graphs', show_default=True)
-def graph(report_dir, glob_string, output_format, output_dir, stat, style, context, palette):
+@click.option('-0', '--ymin0', default=False, is_flag=True, help='Flag t start the y-axis at 0 no matter what')
+def graph(report_dir, glob_string, output_format, output_dir, stat, style, context, palette, ymin0):
     """Draw graphs based on the generated report files
     \f
 
+    :param ymin0: Start the y-axis at 0 no matter what
     :param palette: Seaborn palette for the generated graphs
     :param context: Seaborn context for the generated graphs
     :param style: Seaborn style for the generated graphs
@@ -52,6 +54,11 @@ def graph(report_dir, glob_string, output_format, output_dir, stat, style, conte
         fig.set_title(stat_options[st])
         fig.set_ylabel(stat_options[st])
         fig.set_xlabel("Scenario")
+
+        if ymin0:
+            fig.set_ylim(bottom=0)
+        else:
+            fig.set_ylim((stats_df[st].min() * 0.98, stats_df[st].max() * 1.005))
 
         # call this only between to plots, never at the end
         if i < len(stat) - 1:
