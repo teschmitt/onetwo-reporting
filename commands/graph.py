@@ -3,10 +3,10 @@ import click
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from ReportsCollection import ReportsCollection
 from config import seaborn_palettes, seaborn_styles, stat_options, seaborn_contexts, DEFAULT_GLOB, \
     DEFAULT_GRAPH_CONTEXT, DEFAULT_OUTPUT_DIR, DEFAULT_REPORTS_DIR, DEFAULT_GRAPH_OUTPUT_FMT, DEFAULT_GRAPH_STYLE, \
     DEFAULT_STAT, DEFAULT_GRAPH_PALETTE
-from utils import get_file_list, get_dataframe_from_file_list
 
 
 @click.command('graph')
@@ -16,7 +16,8 @@ from utils import get_file_list, get_dataframe_from_file_list
               type=click.Choice(['PNG', 'JPG'], case_sensitive=False),
               show_default=True)
 @click.option('-g', '--glob', 'glob_string', default=DEFAULT_GLOB, multiple=True,
-              help='Glob pattern to look for in reports directory.', show_default=True)
+              help='Glob pattern(s) to look for in reports directory. If more than one pattern is specified, '
+                   'reports matched by different patterns will be aggregated', show_default=True)
 @click.option('-o', '--output-dir', default=DEFAULT_OUTPUT_DIR, type=click.Path(exists=True), help='Output directory.',
               show_default=True)
 @click.option('-s', '--stat', default=DEFAULT_STAT, type=click.Choice(sorted(stat_options.keys())), multiple=True,
@@ -43,8 +44,8 @@ def graph(report_dir, glob_string, output_format, output_dir, stat, style, conte
     :param report_dir: report directory
     """
 
-    file_list = get_file_list(glob_string, report_dir)
-    stats_df = get_dataframe_from_file_list(file_list)
+    reports_coll = ReportsCollection()
+    stats_df = reports_coll.load_glob(glob_string, report_dir)
 
     for i in range(len(stat)):
         st = stat[i]

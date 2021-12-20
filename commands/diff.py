@@ -1,7 +1,7 @@
 import click
 
+from ReportsCollection import ReportsCollection
 from config import DEFAULT_OUTPUT_DIR
-from utils import get_dataframe_from_file_list
 
 
 @click.command('diff')
@@ -16,7 +16,9 @@ def diff(reports,  output_dir):
     :param output_dir: output directory
     """
 
-    stats_df = get_dataframe_from_file_list(reports).T
+    reports_coll = ReportsCollection()
+    stats_df = reports_coll.load_paths(reports).T
+
     a, b = stats_df.columns
     stats_df['diff'] = stats_df[a] - stats_df[b]
     stats_df['reldiff'] = stats_df['diff'] / stats_df[a]
