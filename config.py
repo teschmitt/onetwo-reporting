@@ -29,7 +29,7 @@ seaborn_contexts = ['paper', 'notebook', 'talk', 'poster']
 
 # Default values for command line options
 
-DEFAULT_GLOB = ['*MessageStats*.txt']
+DEFAULT_GROUP = [('*MessageStats*.txt', 'MsgStats')]
 DEFAULT_OUTPUT_DIR = './images/'
 DEFAULT_GRAPH_OUTPUT_FMT = 'PNG'
 DEFAULT_REPORTS_DIR = './reports/'
