@@ -31,7 +31,7 @@ def diff(report_dir, group, output_dir, output_format):
     report_groups = [ReportsGroup(g, report_dir) for g in group]
     df_list = [rg.df for rg in report_groups]
 
-    if len(df_list) >= 2:
+    try:
         # get the first two tables of reporting data and join them
         stats_a = df_list[0].median()
         stats_b = df_list[1].median()
@@ -41,3 +41,7 @@ def diff(report_dir, group, output_dir, output_format):
         stats_df['reldiff'] = stats_df['diff'] / stats_a
 
         click.echo(stats_df)
+    except IndexError as e:
+        click.echo(f'You must pass two groups when calling diff. {e}')
+
+
